@@ -250,7 +250,6 @@ data "azurerm_public_ip" "vm" {
 }
 
 resource "azurerm_network_security_group" "vm" {
-  count                       = var.remote_port != "" ? 1 : 0
   name                = "${var.vm_hostname}-nsg"
   resource_group_name = data.azurerm_resource_group.vm.name
   location            = coalesce(var.location, data.azurerm_resource_group.vm.location)
