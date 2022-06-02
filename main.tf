@@ -232,16 +232,6 @@ resource "azurerm_virtual_machine" "vm-windows" {
   }
 }
 
-resource "azurerm_availability_set" "vm" {
-  name                         = "${var.vm_hostname}-avset"
-  resource_group_name          = data.azurerm_resource_group.vm.name
-  location                     = coalesce(var.location, data.azurerm_resource_group.vm.location)
-  platform_fault_domain_count  = 2
-  platform_update_domain_count = 2
-  managed                      = true
-  tags                         = var.tags
-}
-
 resource "azurerm_public_ip" "vm" {
   count               = var.nb_public_ip
   name                = "${var.vm_hostname}-pip-${count.index}"
@@ -262,6 +252,7 @@ data "azurerm_public_ip" "vm" {
 }
 
 resource "azurerm_network_security_group" "vm" {
+  count                       = var.remote_port != "" ? 1 : 0
   name                = "${var.vm_hostname}-nsg"
   resource_group_name = data.azurerm_resource_group.vm.name
   location            = coalesce(var.location, data.azurerm_resource_group.vm.location)
@@ -287,13 +278,13 @@ resource "azurerm_network_security_rule" "vm" {
 
 resource "azurerm_network_interface" "vm" {
   count                         = var.nb_instances
-  name                          = "${var.vm_hostname}-nic-${count.index}"
+  name                          = "${var.vm_hostname}-vnic"
   resource_group_name           = data.azurerm_resource_group.vm.name
   location                      = coalesce(var.location, data.azurerm_resource_group.vm.location)
   enable_accelerated_networking = var.enable_accelerated_networking
 
   ip_configuration {
-    name                          = "${var.vm_hostname}-ip-${count.index}"
+    name                          = "${var.vm_hostname}-ip"
     subnet_id                     = var.vnet_subnet_id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = length(azurerm_public_ip.vm.*.id) > 0 ? element(concat(azurerm_public_ip.vm.*.id, tolist([""])), count.index) : ""
