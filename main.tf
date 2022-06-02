@@ -72,7 +72,7 @@ resource "azurerm_virtual_machine" "vm-linux" {
   dynamic storage_data_disk {
     for_each = range(var.nb_data_disk)
     content {
-      name              = "${var.vm_hostname}-datadisk-${count.index}-${storage_data_disk.value}"
+      name              = "${storage_data_disk.value}"
       create_option     = "Empty"
       lun               = storage_data_disk.value
       disk_size_gb      = var.data_disk_size_gb
@@ -181,7 +181,7 @@ resource "azurerm_virtual_machine" "vm-windows" {
   dynamic storage_data_disk {
     for_each = range(var.nb_data_disk)
     content {
-      name              = "${var.vm_hostname}-datadisk-${count.index}-${storage_data_disk.value}"
+      name              = "${storage_data_disk.value}"
       create_option     = "Empty"
       lun               = storage_data_disk.value
       disk_size_gb      = var.data_disk_size_gb
@@ -192,7 +192,7 @@ resource "azurerm_virtual_machine" "vm-windows" {
   dynamic storage_data_disk {
     for_each = var.extra_disks
     content {
-      name              = "${var.vm_hostname}-extradisk-${count.index}-${storage_data_disk.value.name}"
+      name              = "${storage_data_disk.value.name}"
       create_option     = "Empty"
       lun               = storage_data_disk.key + var.nb_data_disk
       disk_size_gb      = storage_data_disk.value.size
