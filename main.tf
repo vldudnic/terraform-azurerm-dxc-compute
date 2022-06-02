@@ -19,7 +19,7 @@ resource "random_id" "vm-sa" {
   byte_length = 6
 }
 
-resource "azurerm_storage_account" "vm-saa" {
+resource "azurerm_storage_account" "vm-saaaaaa" {
   count                    = var.boot_diagnostics ? 1 : 0
   name                     = "bootdiag${lower(random_id.vm-sa.hex)}"
   resource_group_name      = data.azurerm_resource_group.vm.name
