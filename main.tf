@@ -145,7 +145,8 @@ resource "azurerm_virtual_machine" "vm-windows" {
   location                      = coalesce(var.location, data.azurerm_resource_group.vm.location)
   vm_size                       = var.vm_size
   network_interface_ids         = [element(azurerm_network_interface.vm.*.id, count.index)]
-  delete_os_disk_on_termination = var.delete_os_disk_on_termination
+  delete_os_disk_on_termination    = var.delete_os_disk_on_termination
+  delete_data_disks_on_termination = var.delete_data_disks_on_termination
   license_type                  = var.license_type
 
   dynamic identity {
