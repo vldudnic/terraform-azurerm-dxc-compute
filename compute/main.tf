@@ -12,7 +12,7 @@ data "azurerm_subnet" "subnet" {
 
 module "windowsservers" {
   source              			= "pelvis56/dxc-test/azurerm"
-  version 						= "3.14.5"
+  version 						= "4.0.0"
  
   resource_group_name 			= "${data.azurerm_resource_group.dxc.name}"
   vm_hostname         			= "<%=instance.name%>" // line can be removed if only one VM module per resource group
