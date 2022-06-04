@@ -18,7 +18,7 @@ module "windowsservers" {
   vm_hostname         			= "<%=instance.name%>" // line can be removed if only one VM module per resource group
   delete_data_disks_on_termination 	= true
   delete_os_disk_on_termination 	= true
-  is_nsg             = true
+  is_nsg             		= false
   is_windows_image              = true
   admin_password                = "ComplxP@ssw0rd!"
   allocation_method             = "Static"
