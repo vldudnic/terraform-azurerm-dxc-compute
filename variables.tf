@@ -103,6 +103,12 @@ variable "is_windows_image" {
   default     = false
 }
 
+variable "is_nsg" {
+  description = "Boolean flag to notify when the nsg is needed."
+  type        = bool
+  default     = false
+}
+
 variable "vm_os_publisher" {
   description = "The name of the publisher of the image that you want to deploy. This is ignored when vm_os_id or vm_os_simple are provided."
   type        = string
