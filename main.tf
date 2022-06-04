@@ -294,7 +294,7 @@ resource "azurerm_network_interface" "vm" {
 }
 
 resource "azurerm_network_interface_security_group_association" "association" {
-  count                     = ( var.nb_instances && var.is_nsg ) ? 1 : 0
+  count               	    = var.is_nsg ? 1 : 0
   network_interface_id      = azurerm_network_interface.vm[count.index].id
   network_security_group_id = azurerm_network_security_group.vm[count.index].id
 }

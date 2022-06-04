@@ -5,12 +5,12 @@ output "vm_ids" {
 
 output "network_security_group_id" {
   description = "id of the security group provisioned"
-  value       = azurerm_network_security_group.vm.id
+  value       = azurerm_network_security_group.vm.*.id
 }
 
 output "network_security_group_name" {
   description = "name of the security group provisioned"
-  value       = azurerm_network_security_group.vm.name
+  value       = azurerm_network_security_group.vm.*.name
 }
 
 output "network_interface_ids" {
