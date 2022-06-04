@@ -11,7 +11,7 @@ data "azurerm_subnet" "subnet" {
 }
 
 module "windowsservers" {
-  source              			= "git:terraform-azurerm-dxc-test?ref=lastest"
+  source              			= "https://github.com/pelvis56/terraform-azurerm-dxc-test.git?ref=lastest"
  
   resource_group_name 			= "${data.azurerm_resource_group.dxc.name}"
   vm_hostname         			= "<%=instance.name%>" // line can be removed if only one VM module per resource group
