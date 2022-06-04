@@ -251,6 +251,7 @@ data "azurerm_public_ip" "vm" {
 }
 
 resource "azurerm_network_security_group" "vm" {
+  count               = var.is_nsg
   name                = "${var.vm_hostname}-nsg"
   resource_group_name = data.azurerm_resource_group.vm.name
   location            = coalesce(var.location, data.azurerm_resource_group.vm.location)
@@ -291,8 +292,8 @@ resource "azurerm_network_interface" "vm" {
   tags = var.tags
 }
 
-resource "azurerm_network_interface_security_group_association" "test" {
-  count                     = var.nb_instances
+resource "azurerm_network_interface_security_group_association" "association" {
+  count                     = ( var.nb_instances && var.is_nsg )
   network_interface_id      = azurerm_network_interface.vm[count.index].id
   network_security_group_id = azurerm_network_security_group.vm.id
 }
