@@ -272,7 +272,8 @@ resource "azurerm_network_security_rule" "vm" {
   destination_port_range      = coalesce(var.remote_port, module.os.calculated_remote_port)
   source_address_prefixes     = var.source_address_prefixes
   destination_address_prefix  = "*"
-  network_security_group_name = azurerm_network_security_group.vm.name
+  network_security_group_name = azurerm_network_security_group.vm[count.index].name
+
 }
 
 resource "azurerm_network_interface" "vm" {
