@@ -14,7 +14,7 @@ module "windowsservers" {
   source              			= "pelvis56/dxc-test/azurerm"
  
   resource_group_name 			= "${data.azurerm_resource_group.dxc.name}"
-  vm_hostname         			= "<%=customOptions.azure_type><%=customOptions.azure_code_site><%=customOptions.azure_aip><%=customOptions.azure_type_os><%=customOptions.azure_env_range>" // line can be removed if only one VM module per resource group
+  vm_hostname         			= "<%=customOptions.azure_type%><%=customOptions.azure_code_site%><%=customOptions.azure_aip%><%=customOptions.azure_type_os%><%=customOptions.azure_env_range%>" // line can be removed if only one VM module per resource group
   delete_data_disks_on_termination 	= true
   delete_os_disk_on_termination 	= true
   is_nsg             		= false
