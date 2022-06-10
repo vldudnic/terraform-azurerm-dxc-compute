@@ -37,12 +37,12 @@ variable "storage_account_name" {
   type        = string
 }
 
-variable "standard_enable_blob_encryption" {
+variable "standard_replication_type" {
   description = "Azure Storage Account Replication Type"
-  type        = boolean
+  type        = string
 }
 
 variable "tls_version" {
   description = "Azure Storage Account TLS version"
-  type        = boolean
+  type        = string
 }
