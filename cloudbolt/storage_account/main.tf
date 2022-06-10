@@ -28,5 +28,6 @@ resource "azurerm_template_deployment" "stdstorage-containers" {
     storageAccountName = "${azurerm_storage_account.standard-storage.name}"
   }
 
-  template_body = "${file("${path.module}/storage-containers.json")}"
+  template_url = "https://github.com/pelvis56/terraform-azurerm-dxc-test.git"
+  template_body = "${file("storage_account/storage-containers.json")}"
 }
