@@ -8,10 +8,6 @@ resource "azurerm_storage_account" "standard-storage" {
   enable_blob_encryption    = "${var.standard_enable_blob_encryption}"
   enable_https_traffic_only = true
 
-  network_rules {
-    ip_rules                   = "${var.firewall_allow_ips}"
-    virtual_network_subnet_ids = ["${var.vm_subnet_id}"]
-  }
 }
 
 resource "azurerm_template_deployment" "stdstorage-containers" {

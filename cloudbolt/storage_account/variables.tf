@@ -32,4 +32,17 @@ variable "location" {
   type        = string
 }
 
+variable "storage_account_name" {
+  description = "Azure Storage Account Name"
+  type        = string
+}
 
+variable "standard_enable_blob_encryption" {
+  description = "Azure Storage Account Replication Type"
+  type        = boolean
+}
+
+variable "tls_version" {
+  description = "Azure Storage Account TLS version"
+  type        = boolean
+}
