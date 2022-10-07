@@ -6,7 +6,7 @@ data "azurerm_subnet" "subnet" {
 }
 
 module "windowsservers" {
-  source              			= "cores/compute/virtual_machine"
+  source              			= "pelvis56/dxc-compute/azurerm/cores/compute/virtual_machine"
  
   resource_group_name 			= var.resource_group_name
   vm_hostname         			= var.vm_hostname // line can be removed if only one VM module per resource group
