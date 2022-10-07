@@ -27,7 +27,7 @@ resource "azurerm_resource_group" "example" {
 }
 
 module "linuxservers" {
-  source              = "Azure/compute/azurerm"
+  source              = "../../../cores/compute/virtual_machine"
   resource_group_name = azurerm_resource_group.example.name
   vm_os_simple        = "UbuntuServer"
   public_ip_dns       = ["linsimplevmips"] // change to a unique name per datacenter region
@@ -37,7 +37,7 @@ module "linuxservers" {
 }
 
 module "windowsservers" {
-  source              = "Azure/compute/azurerm"
+  source              = "../../../cores/compute/virtual_machine"
   resource_group_name = azurerm_resource_group.example.name
   is_windows_image    = true
   vm_hostname         = "mywinvm" // line can be removed if only one VM module per resource group
@@ -83,7 +83,7 @@ resource "azurerm_resource_group" "example" {
 }
 
 module "linuxservers" {
-  source              = "Azure/compute/azurerm"
+  source              = "../../../cores/compute/virtual_machine"
   resource_group_name = azurerm_resource_group.example.name
   vm_os_simple        = "UbuntuServer"
   public_ip_dns       = ["linsimplevmips"] // change to a unique name per datacenter region
@@ -91,7 +91,7 @@ module "linuxservers" {
 }
 
 module "windowsservers" {
-  source              = "Azure/compute/azurerm"
+  source              = "../../../cores/compute/virtual_machine"
   resource_group_name = azurerm_resource_group.example.name
   is_windows_image    = true
   vm_hostname         = "mywinvm" // line can be removed if only one VM module per resource group
@@ -182,7 +182,7 @@ data "azurerm_key_vault_certificate" "example" {
 }
 
 module "linuxservers" {
-  source                           = "Azure/compute/azurerm"
+  source                           = "../../../cores/compute/virtual_machine"
   resource_group_name              = azurerm_resource_group.example.name
   vm_hostname                      = "mylinuxvm"
   nb_public_ip                     = 0
@@ -211,7 +211,7 @@ module "linuxservers" {
 }
 
 module "windowsservers" {
-  source                        = "Azure/compute/azurerm"
+  source                        = "../../../cores/compute/virtual_machine"
   resource_group_name           = azurerm_resource_group.example.name
   vm_hostname                   = "mywinvm"
   is_windows_image              = true
