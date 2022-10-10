@@ -2,7 +2,7 @@
 data "azurerm_subnet" "subnet" {
   name                 = split("/", var.subnet_name)[1]
   virtual_network_name = split("/", var.subnet_name)[0]
-  resource_group_name  = "sdc3-net-vd-rg"
+  resource_group_name  = "sdc3-net-shared-rg"
 }
 
 module "linuxservers" {
