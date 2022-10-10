@@ -8,8 +8,10 @@ data "azurerm_subnet" "subnet" {
 module "linuxservers" {
   source              			= "../../../cores/compute/virtual_machine"
  
-  resource_group_name 			= var.resource_group_name
-  vm_hostname         			= var.vm_hostname // line can be removed if only one VM module per resource group
+  #resource_group_name 			= var.resource_group_name
+  resource_group_name 			= "example-virtual-machine-rg1"
+  #vm_hostname         			= var.vm_hostname // line can be removed if only one VM module per resource group
+  vm_hostname         			= "vd-example_vm1"  
   delete_data_disks_on_termination 	= true
   delete_os_disk_on_termination 	= true
   is_nsg             			= false
@@ -19,10 +21,11 @@ module "linuxservers" {
   public_ip_sku                 	= "Standard"
   public_ip_dns                 	= ["test-pip"]
   nb_public_ip                  	= 0
-  vm_os_publisher               	= "Ubuntu"
+  vm_os_publisher               	= "Canonical"
   vm_os_offer                   	= "UbuntuServer"
-  vm_os_sku                     	= ""
-  vm_size                       	= var.vm_size
+  vm_os_sku                     	= "18.04-LTS"
+  #vm_size                       	= var.vm_size
+  vm_size                         = "Standard_F2"  
   vnet_subnet_id      			= "${data.azurerm_subnet.subnet.id}"
   enable_accelerated_networking 	= true
   license_type                  	= ""
