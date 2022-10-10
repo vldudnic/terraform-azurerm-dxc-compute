@@ -23,7 +23,7 @@ variable "client_secret" {
 }
 
 variable "vm_hostname" {
-  description = "Azure VM size"
+  description = "Azure VM hostname"
   type        = string
 }
 
