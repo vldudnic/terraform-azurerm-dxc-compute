@@ -26,7 +26,7 @@ module "linuxservers" {
   vm_os_sku                     	= "18.04-LTS"
   #vm_size                       	= var.vm_size
   vm_size                         = "Standard_F2"  
-  vnet_subnet_id      			= "${data.azurerm_subnet.subnet.id}"
+  #vnet_subnet_id      			= "${data.azurerm_subnet.subnet.id}"
   enable_accelerated_networking 	= true
   license_type                  	= ""
   identity_type                 	= "SystemAssigned" // can be empty, SystemAssigned or UserAssigned
