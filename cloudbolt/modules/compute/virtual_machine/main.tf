@@ -20,7 +20,7 @@ module "linuxservers" {
   public_ip_dns                 	= ["test-pip"]
   nb_public_ip                  	= 0
   vm_os_publisher               	= "Ubuntu"
-  vm_os_offer                   	= ""
+  vm_os_offer                   	= "UbuntuServer"
   vm_os_sku                     	= ""
   vm_size                       	= var.vm_size
   vnet_subnet_id      			= "${data.azurerm_subnet.subnet.id}"
