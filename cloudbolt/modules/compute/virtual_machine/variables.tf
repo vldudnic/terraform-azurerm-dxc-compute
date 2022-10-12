@@ -24,24 +24,25 @@ variable "client_secret" {
 
 variable "vm_hostname" {
   description = "Azure VM hostname"
+  default = ""
   type        = string
 }
 
 variable "vm_size" {
   description = "Azure VM size"
+  default = ""
   type        = string
 }
 
 variable "subnet_name" {
   description = "Azure Subnet definition"
+  default = ""
   type        = string
 }
 
 variable "resource_group_name" {
   description = "Azure Resource Group definition"
+  default = ""
   type        = string
 }
-
-
-
 
