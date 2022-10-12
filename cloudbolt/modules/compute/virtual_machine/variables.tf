@@ -22,6 +22,12 @@ variable "client_secret" {
   type        = string
 }
 
+variable "vnet_subnet_id" {
+  description = " Vnet Subnet Id"
+  default = ""
+  type        = string
+}
+
 variable "vm_hostname" {
   description = "Azure VM hostname"
   default = ""
